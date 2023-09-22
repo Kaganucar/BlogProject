@@ -1,0 +1,25 @@
+﻿<a href="/Admin/Categories/Insert" class="btn btn-primary">Yeni Ekle</a>
+
+<table class="table table-bordered" style="margin-top:20px;">
+
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Kategori Adı</td>
+            <td>Menu</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.CategoryName</td>
+                <td>
+                    <a href="/Admin/Update/@item.Id" class="btn btn-primary">Güncelle</a>
+                    <a href="/Admin/Delete/@item.Id" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

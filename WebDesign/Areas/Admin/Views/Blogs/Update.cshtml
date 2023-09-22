@@ -1,0 +1,51 @@
+﻿<a href="/Admin/Blogs" class="btn btn-primary">Geri Dön</a>
+<br />
+<form action="/Admin/Blog/Update/@Model.Id" method="post" enctype="multipart/form-data">
+    <br />
+    <label>Resim Seç: </label><br />
+    <img src="/Images/@Model.Images" width="300px;" /><br /><br />
+    <input type="file" name="file" class="form-control" /><br />
+
+    <label>Blog Başlık: </label><br />
+    <input type="text" name="Title" placeholder="Başlık" value="@Model.Title" class="form-control" /><br />
+
+    <label>Yazar: </label><br />
+    <input type="text" name="Author" placeholder="Yazar" value="@Model.Author" class="form-control" /><br />
+
+    <label>Blog Adı: </label>
+    <input type="text" name="BlogName" placeholder="Blog Adı" value="@Model.BlogName" class="form-control" /> <br />
+
+    <label>Kategori Seç: </label>
+    <select name="CategoriesId" class="form-control">
+        @foreach (var item in ViewBag.Categories)
+        {
+            if (item.Id == Model.CategoriesId)
+            {
+                <option value="@item.Id">@item.CategoryName</option>
+            }
+        }
+        @foreach (var item in ViewBag.Categories)
+        {
+            if (item.Id != Model.CategoriesId)
+            {
+                <option value="@item.Id">@item.CategoryName</option>
+            }
+        }
+    </select><br />
+
+    <label>Blog Açıklama: </label><br />
+    <textarea type="text" name="Explanation" placeholder="Blog Açıklama" class="form-control" style="height:200px;">@Model.Explanation</textarea><br />
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+
+</form>
+
+@if (ViewBag.message != null)
+{
+    <div class="alert alert-info">@ViewBag.message</div>
+}
+
+@if (ViewBag.error != null)
+{
+    <div class="alert alert-danger">@ViewBag.error</div>
+}

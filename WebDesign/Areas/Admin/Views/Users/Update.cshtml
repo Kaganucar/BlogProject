@@ -1,0 +1,37 @@
+﻿<a href="/Admin/Users" class="btn btn-primary">Geri Git</a>
+
+<!--Controller tarafına inputlara girilen verileri göndermemizi sağlayan bir mekanizmadır.-->
+<form action="/Admin/User/Update/@Model.Id" method="post">
+    <br />
+    <label>Kullanıcı Adı: </label><br />
+    <input type="text" name="Name" value="@Model.Name" placeholder="İsim" class="form-control" /><br />
+
+    <label>Kullanıcı Eposta: </label><br />
+    <input type="email" name="Email" value="@Model.Email" class="form-control" /><br />
+
+    <label>Kullanıcı Şifre: </label><br />
+    <input type="password" name="Password" value="@Model.Password" class="form-control" /><br />
+
+    <label>Kullanıcı Rol: </label><br />
+    <select name="Roles" class="form-control">
+        @if (Model.Roles == "Admin")
+        {
+            <option value="Admin">Admin</option>
+            <option value="Uye">Uye</option>
+        }
+        else
+        {
+            <option value="Uye">Uye</option>
+            <option value="Admin">Admin</option>
+        }
+
+    </select>
+    <br />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+
+</form>
+
+@if (ViewBag.message != null)
+{
+    <div class="alert alert-info">@ViewBag.message</div>
+}
